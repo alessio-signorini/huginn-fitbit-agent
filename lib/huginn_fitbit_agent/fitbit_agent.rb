@@ -93,12 +93,6 @@ module Agents
     end
 
 
-    def view_url
-      file = File.dirname(__FILE__) + '/../../views/_show.html.erb'
-      return {:inline => File.read(file)}
-    end
-
-
     def oauth2_callback_url
       "http://localhost:3000/users/#{user_id}/web_requests/#{id}/oauth2_callback"
     end
