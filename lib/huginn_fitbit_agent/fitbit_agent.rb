@@ -97,12 +97,15 @@ module Agents
       "http://localhost:3000/users/#{user_id}/web_requests/#{id}/oauth2_callback"
     end
 
-    private
-
 
     def oauth2_client_string
       ENV['FITBIT_OAUTH2_CLIENT'] || interpolated['oauth2_client']
     end
+
+
+
+    private
+
 
 
     def oauth2_secret_string

@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "huginn_fitbit_agent"
-  spec.version       = '1.0'
+  spec.version       = '1.0.1'
   spec.authors       = ["Alessio Signorini"]
   spec.email         = ["alessio@signorini.us"]
 
@@ -21,8 +21,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "byebug"
+  spec.add_development_dependency "web-console"
 
   spec.add_runtime_dependency "huginn_agent"
   spec.add_runtime_dependency "oauth2"
+  # spec.add_runtime_dependency "byebug"
+  # spec.add_runtime_dependency "web-console"
 
 end

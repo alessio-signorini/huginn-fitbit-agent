@@ -1,3 +1,5 @@
+<% @callback_url = "#{request.base_url}/users/#{@agent.user_id}/web_requests/#{@agent.id}/oauth2_callback" %>
+
 <% if @agent.memory['oauth2_token'].present? %>
   Agent has been authorized for the following scopes:
   <ul>
@@ -7,8 +9,8 @@
   </ul>
 <% else %>
   Please complete OAUTH2, specify the following callback URL in your Personal Fitbit app
-<pre><%= @agent.oauth2_callback_url %></pre>
+<pre><%= @callback_url %></pre>
   and then click
-  <a href="https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=<%=@agent.options[:oauth2_client]%>&redirect_uri=<%=@agent.oauth2_callback_url%>&scope=<%=@agent.options[:scope]%>&prompt=login%20consent">this link</a>
+  <a href="https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=<%=@agent.oauth2_client_string%>&redirect_uri=<%=@callback_url%>&scope=<%=@agent.options[:scope]%>&prompt=login%20consent">this link</a>
   click this link to authorize it to fetch data for your account.
 <% end %>
