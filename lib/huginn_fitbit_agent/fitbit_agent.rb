@@ -232,7 +232,7 @@ module Agents
 
 
     def redirect_back
-      "<html><head><meta http-equiv='refresh' content='0; url=http://localhost:3000/agents/#{id}'/></head></html>"
+      "<html><head><meta http-equiv='refresh' content='0; url=/agents/#{id}'/></head></html>"
     end
 
   end

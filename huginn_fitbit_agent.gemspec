@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "huginn_fitbit_agent"
-  spec.version       = '1.0.2'
+  spec.version       = '1.0.3'
   spec.authors       = ["Alessio Signorini"]
   spec.email         = ["alessio@signorini.us"]
 
