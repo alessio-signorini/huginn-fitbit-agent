@@ -93,18 +93,26 @@ module Agents
     end
 
 
-    def oauth2_callback_url
-      "http://localhost:3000/users/#{user_id}/web_requests/#{id}/oauth2_callback"
+
+    def web_request_url(secret, base_url=nil)
+      [base_url, "/users/#{user_id}/web_requests/#{id}/", secret].compact.join
     end
 
 
-    def oauth2_client_string
-      ENV['FITBIT_OAUTH2_CLIENT'] || interpolated['oauth2_client']
+
+    def fitbit_authorize_url
+      "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=#{oauth2_client_string}&scope=#{options[:scope]}&prompt=login%20consent"
     end
 
 
 
     private
+
+
+
+    def oauth2_client_string
+      ENV['FITBIT_OAUTH2_CLIENT'] || interpolated['oauth2_client']
+    end
 
 
 
@@ -214,8 +222,7 @@ module Agents
     def oauth2_get_token(code)
       token = oauth2_client.get_token(
         :code         => code,
-        :grant_type   => :authorization_code,
-        :redirect_uri => oauth2_callback_url
+        :grant_type   => :authorization_code
       )
 
       memory['oauth2_token'] = token.to_hash
